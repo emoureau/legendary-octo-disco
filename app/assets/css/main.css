@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+html {
+    background-color: var(--color-mauve-800);
+    color: var(--color-mauve-50);
+    font-family: "Roboto", sans-serif;
+}
