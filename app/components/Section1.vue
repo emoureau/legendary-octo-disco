@@ -1,6 +1,11 @@
 <script setup lang="ts">
-const { data: widget, status: widgetStatus, error: widgetError, refresh } = useAsyncData('slow-featured-request', () =>
-  fetchMockData({ title: 'Data loaded successfully!' }, 5000), {
+const {
+  data: widget,
+  status: widgetStatus,
+  error: widgetError,
+  refresh,
+} = useAsyncData('slow-featured-request', () =>
+  fetchMockData({ title: 'Data loaded successfully! India\'s young are more educated than ever. So why are so many jobless?' }, 5000), {
   server: false, // <--- This is the key for SSR apps
   lazy: true,
 })

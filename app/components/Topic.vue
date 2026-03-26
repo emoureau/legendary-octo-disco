@@ -4,7 +4,12 @@ interface Props {
 }
 const props = defineProps<Props>()
 
-const { data: widget, status: widgetStatus, error: widgetError, refresh } = useAsyncData(
+const {
+  data: widget,
+  status: widgetStatus,
+  error: widgetError,
+  refresh,
+} = useAsyncData(
   `slow-topic-request-${props.widgetId}`, // Keyed by ID so it refreshes if ID changes
   async () => {
     // 1. Initial Call
@@ -84,5 +89,5 @@ const TOPIC_CARDS_AMOUNT = 4
         </div>
       </section>
     </div>
-  </clientonly>
+  </ClientOnly>
 </template>
