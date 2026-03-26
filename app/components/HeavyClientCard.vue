@@ -27,9 +27,6 @@ const {
       subItems: subDetails,
     }
   },
-  {
-    server: false,
-  },
 )
 </script>
 
