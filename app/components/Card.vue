@@ -41,20 +41,20 @@ function say(message) {
 <template>
   <article class="group grid grid-cols-1 items-center" :class="[variant === 'hero' ? 'lg:grid-cols-2 gap-8 lg:gap-12' : 'lg:grid-cols-1 gap-4']">
     <!-- Image -->
-    <NuxtLink v-if="variant !== 'sm'" to="/" class="block focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2 rounded-md w-full">
+    <NuxtLink v-if="variant !== 'sm'" to="/" class="block focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2 rounded-none w-full">
       <img
         :src="`https://random.danielpetrica.com/api/random?size=small&seed=${category}`"
         lt="A random image different from the others"
         loading="lazy"
-        class="w-full  aspect-video object-cover rounded-md bg-container-primary"
+        class="w-full  aspect-video object-cover rounded-none bg-container-primary"
       >
     </NuxtLink>
     <!-- Text Content -->
     <div class="hover:cursor-pointer flex flex-col gap-2" @click="say('Woops -- clicked it!')">
-      <p class="text-xs uppercase tracking-wider font-semibold text-purple-300">
+      <p class="text-xs uppercase tracking-wider font-semibold text-blue-300">
         {{ category }}
       </p>
-      <h3 :class="fontClasses" :title="title || 'This is a reusable card component that can be used to display content in a visually appealing way.'" class="font-serif font-medium group-hover:text-purple-600 transition-colors duration-200 leading-snug line-clamp-3">
+      <h3 :class="fontClasses" :title="title || 'This is a reusable card component that can be used to display content in a visually appealing way.'" class="font-sans font-medium group-hover:text-blue-400 transition-colors duration-200 leading-snug line-clamp-3">
         {{ title || 'This is a reusable card component that can be used to display content in a visually appealing way.' }}
       </h3>
       <p v-if="showSummary" title="This is some example content inside the card. You can replace this with your own content." class="text-sm opacity-80 leading-relaxed line-clamp-2">

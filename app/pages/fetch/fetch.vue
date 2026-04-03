@@ -26,7 +26,7 @@ const {
 
 <template>
   <div class="mx-auto max-w-5xl py-24 flex flex-col gap-4">
-    <NuxtLink to="/play" class="text-lg font-bold text-lime-400 hover:underline">
+    <NuxtLink to="/fetch" class="text-lg font-bold text-lime-400 hover:underline">
       Back to play
     </NuxtLink>
 

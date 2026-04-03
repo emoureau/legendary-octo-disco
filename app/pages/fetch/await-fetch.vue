@@ -1,35 +1,32 @@
 <script setup lang="ts">
 let callCount = 0
 
+callCount++
+const env = import.meta.server ? '🖥️ SERVER' : '🌐 CLIENT'
+console.warn(`[${env}] await useFetch setup call #${callCount}`)
+
 const {
   data,
   pending,
   error,
   refresh,
-} = await useAsyncData('await-use-async-data', () => {
-  callCount++
-  const env = import.meta.server ? '🖥️ SERVER' : '🌐 CLIENT'
-  console.log(`[${env}] fetchMockData call #${callCount}`)
-  return fetchMockData({ title: 'Server data!' }, 3000)
-})
-
-console.log('await useAsyncData setup ran on:', import.meta.server ? '🖥️ SERVER' : '🌐 CLIENT')
+} = await useFetch('/api/random-number/')
 </script>
 
 <template>
   <div class="mx-auto max-w-5xl py-24 flex flex-col gap-4">
-    <NuxtLink to="/play" class="text-lg font-bold text-purple-400 hover:underline">
+    <NuxtLink to="/fetch" class="text-lg font-bold text-lime-400 hover:underline">
       Back to play
     </NuxtLink>
 
     <h1 class="text-5xl">
-      await useAsyncData()
+      await useFetch()
     </h1>
     <p class="text-xl">
       This page takes 3 seconds to load on Server and Client.
     </p>
     <p class="border border-olive-600 p-4">
-      <code>{{ data?.title || 'It is not possible to see this except on an error.' }}</code>
+      <code>{{ data?.number || 'It is not possible to see this except on an error.' }}</code>
     </p>
     <p>
       <code>{{ error }}</code>

@@ -1,0 +1,39 @@
+<script setup lang="ts">
+</script>
+
+<template>
+  <header class="w-full h-9 bg-mauve-900 text-center uppercase tracking-wider px-4 sm:px-6 py-1.5 flex gap-1 items-center justify-center">
+    <Icon name="ui:sunglasses-fill" class="text-2xl text-purple-400" />
+    Header // Header
+    <Icon name="ui:sunglasses" class="text-2xl text-purple-400" />
+  </header>
+  <div class="min-h-[calc(100vh-36px)] flex flex-col justify-between bg-mauve-800">
+    <main id="maincontent" class="mx-auto max-w-7xl">
+      <h1 class="sr-only">
+        Layout Testing Page
+      </h1>
+      <div class="flex flex-col lg:flex-row w-full gap-10">
+        <!-- sidebar -->
+        <div class="w-full lg:w-sm lg:shrink-0 bg-mauve-900">
+          <section class="mx-auto">
+            <img
+              src="https://random.danielpetrica.com/api/random?size=small"
+              lt="A random image different from the others"
+              loading="lazy"
+              class="w-full object-cover rounded-none bg-container-primary mb-8"
+            >
+            <Section4 />
+          </section>
+        </div>
+
+        <!-- content -->
+        <div class="w-full grow">
+          <Section5 />
+        </div>
+      </div>
+    </main>
+    <footer class="w-full bg-mauve-950 text-center uppercase tracking-wider px-4 sm:px-6 py-40">
+      Footer // Footer
+    </footer>
+  </div>
+</template>

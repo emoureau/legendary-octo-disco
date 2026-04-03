@@ -1,7 +1,11 @@
 @import "tailwindcss";
 
+@theme {
+    --container-9xl: 100rem;
+}
+
 html {
-    background-color: var(--color-mauve-800);
-    color: var(--color-mauve-50);
+    background-color: var(--color-slate-900);
+    color: var(--color-slate-50);
     font-family: "Roboto", sans-serif;
 }
