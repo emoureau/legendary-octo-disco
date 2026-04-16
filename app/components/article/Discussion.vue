@@ -13,11 +13,11 @@ const { data } = await useAsyncData('article-discussion', () =>
 
 <template>
   <div class="space-y-4">
-    <h2 class="text-base font-semibold text-slate-100 uppercase tracking-widest">4. Discussion</h2>
+    <h2 class="text-base font-semibold text-on-surface uppercase tracking-widest">4. Discussion</h2>
     <p
       v-for="(p, i) in data?.paragraphs"
       :key="i"
-      class="text-sm text-slate-300 leading-relaxed"
+      class="text-sm text-on-surface-variant leading-relaxed"
     >
       {{ p }}
     </p>

@@ -29,14 +29,14 @@ const { data } = await useAsyncData('article-methods', () =>
 
 <template>
   <div class="space-y-6">
-    <h2 class="text-base font-semibold text-slate-100 uppercase tracking-widest">2. Materials &amp; Methods</h2>
+    <h2 class="text-base font-semibold text-on-surface uppercase tracking-widest">2. Materials &amp; Methods</h2>
     <div
       v-for="sub in data?.subsections"
       :key="sub.heading"
       class="space-y-2"
     >
-      <h3 class="text-sm font-semibold text-slate-200">{{ sub.heading }}</h3>
-      <p class="text-sm text-slate-300 leading-relaxed">{{ sub.body }}</p>
+      <h3 class="text-sm font-semibold text-on-surface">{{ sub.heading }}</h3>
+      <p class="text-sm text-on-surface-variant leading-relaxed">{{ sub.body }}</p>
     </div>
   </div>
 </template>

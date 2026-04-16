@@ -34,7 +34,7 @@ const { data } = await useAsyncData('article-results', () =>
 
 <template>
   <div class="space-y-8">
-    <h2 class="text-base font-semibold text-slate-100 uppercase tracking-widest">
+    <h2 class="text-base font-semibold text-on-surface uppercase tracking-widest">
       3. Results
     </h2>
 
@@ -44,10 +44,10 @@ const { data } = await useAsyncData('article-results', () =>
       :key="sub.heading"
       class="space-y-2"
     >
-      <h3 class="text-sm font-semibold text-slate-200">
+      <h3 class="text-sm font-semibold text-on-surface">
         {{ sub.heading }}
       </h3>
-      <p class="text-sm text-slate-300 leading-relaxed">
+      <p class="text-sm text-on-surface-variant leading-relaxed">
         {{ sub.body }}
       </p>
     </div>
@@ -57,18 +57,18 @@ const { data } = await useAsyncData('article-results', () =>
       <div
         v-for="fig in data?.figures"
         :key="fig.id"
-        class="border border-white/10 rounded-lg overflow-hidden"
+        class="border border-outline-variant rounded-lg overflow-hidden"
       >
-        <div class="bg-white/5 aspect-[16/7] flex items-center justify-center text-slate-600 text-sm font-mono">
+        <div class="bg-surface-container aspect-16/7 flex items-center justify-center">
           <img
             src="https://random.danielpetrica.com/api/random?size=small&seed=test"
             lt="A random image different from the others"
             loading="lazy"
-            class="w-full rounded-none bg-container-primary"
+            class="w-full rounded-none bg-primary-container"
           >
         </div>
-        <p class="text-xs text-slate-400 leading-relaxed p-3 border-t border-white/8">
-          <span class="font-semibold text-slate-300">{{ fig.id }}. </span>{{ fig.caption }}
+        <p class="text-xs text-on-surface-muted leading-relaxed p-3 border-t border-outline-variant">
+          <span class="font-semibold text-on-surface-variant">{{ fig.id }}. </span>{{ fig.caption }}
         </p>
       </div>
     </div>

@@ -23,36 +23,36 @@ const { data } = await useAsyncData('article-conclusion', () =>
   <div class="space-y-8">
     <!-- Conclusion -->
     <div class="space-y-3">
-      <h2 class="text-base font-semibold text-slate-100 uppercase tracking-widest">5. Conclusion</h2>
-      <p class="text-sm text-slate-300 leading-relaxed">{{ data?.conclusion }}</p>
+      <h2 class="text-base font-semibold text-on-surface uppercase tracking-widest">5. Conclusion</h2>
+      <p class="text-sm text-on-surface-variant leading-relaxed">{{ data?.conclusion }}</p>
     </div>
 
     <!-- Acknowledgements -->
     <div class="space-y-2">
-      <h2 class="text-xs font-semibold uppercase tracking-widest text-slate-400">Acknowledgements</h2>
-      <p class="text-xs text-slate-400 leading-relaxed">{{ data?.acknowledgements }}</p>
+      <h2 class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant">Acknowledgements</h2>
+      <p class="text-xs text-on-surface-muted leading-relaxed">{{ data?.acknowledgements }}</p>
     </div>
 
     <!-- Data availability + CoI -->
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-      <div class="bg-white/4 border border-white/8 rounded-lg p-4 space-y-1">
-        <h3 class="text-xs font-semibold uppercase tracking-widest text-slate-400">Data Availability</h3>
-        <p class="text-xs text-slate-400 leading-relaxed">{{ data?.dataAvailability }}</p>
+      <div class="bg-surface-container border border-outline-variant rounded-lg p-4 space-y-1">
+        <h3 class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant">Data Availability</h3>
+        <p class="text-xs text-on-surface-muted leading-relaxed">{{ data?.dataAvailability }}</p>
       </div>
-      <div class="bg-white/4 border border-white/8 rounded-lg p-4 space-y-1">
-        <h3 class="text-xs font-semibold uppercase tracking-widest text-slate-400">Conflict of Interest</h3>
-        <p class="text-xs text-slate-400 leading-relaxed">{{ data?.conflictOfInterest }}</p>
+      <div class="bg-surface-container border border-outline-variant rounded-lg p-4 space-y-1">
+        <h3 class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant">Conflict of Interest</h3>
+        <p class="text-xs text-on-surface-muted leading-relaxed">{{ data?.conflictOfInterest }}</p>
       </div>
     </div>
 
     <!-- References -->
     <div class="space-y-2">
-      <h2 class="text-xs font-semibold uppercase tracking-widest text-slate-400">References</h2>
+      <h2 class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant">References</h2>
       <ol class="list-decimal list-inside space-y-1">
         <li
           v-for="ref in data?.references"
           :key="ref"
-          class="text-xs text-slate-500 leading-relaxed"
+          class="text-xs text-on-surface-muted leading-relaxed"
         >
           {{ ref }}
         </li>

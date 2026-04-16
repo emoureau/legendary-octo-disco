@@ -58,53 +58,53 @@ function doRefresh() {
 
 <template>
   <div class="mx-auto max-w-5xl py-24 flex flex-col gap-6">
-    <NuxtLink to="/fetch" class="text-lg font-bold text-violet-400 hover:underline">
+    <NuxtLink to="/fetch" class="text-lg font-bold text-primary hover:underline">
       Back to play
     </NuxtLink>
 
-    <h1 class="text-5xl">
+    <h1 class="text-5xl font-bold tracking-tight text-on-surface">
       Cache headers
     </h1>
-    <p class="text-xl">
+    <p class="text-xl text-on-surface-variant leading-relaxed">
       Raw HTTP response headers from <code>/api/posts.cached</code> (Nitro <code>maxAge: 10</code>).
       <br>Open DevTools → Network for the full picture — some headers may be stripped in dev.
     </p>
 
     <div class="flex gap-4 items-center">
-      <button class="text-xs text-gray-500 underline hover:no-underline" @click="doRefresh()">
+      <button class="text-xs text-on-surface-muted underline hover:no-underline" @click="doRefresh()">
         Refresh
       </button>
-      <span v-if="clientRefreshedAt" class="text-xs text-gray-500">
+      <span v-if="clientRefreshedAt" class="text-xs text-on-surface-muted">
         Refreshed at {{ clientRefreshedAt }}
       </span>
     </div>
 
-    <p :class="[pending ? 'text-rose-300' : 'text-green-300']">
+    <p :class="[pending ? 'text-error' : 'text-positive']">
       {{ pending ? 'Loading...' : 'Loaded' }}
     </p>
 
-    <div class="border border-olive-600 p-6 font-mono text-sm flex flex-col gap-2">
-      <div class="text-gray-400 mb-2">
+    <div class="border border-outline p-6 font-mono text-sm flex flex-col gap-2">
+      <div class="text-on-surface-muted mb-2">
         Response headers captured via <code>onResponse</code>:
       </div>
       <template v-if="Object.keys(capturedHeaders).length">
         <div v-for="(value, key) in capturedHeaders" :key="key">
-          <span class="text-violet-300">{{ key }}</span>: {{ value }}
+          <span class="text-primary">{{ key }}</span>: {{ value }}
         </div>
       </template>
-      <div v-else class="text-gray-500">
+      <div v-else class="text-on-surface-muted">
         No cache headers captured yet (or they were stripped by the dev proxy).
       </div>
-      <hr class="border-gray-700 my-2">
-      <div class="text-gray-400">
+      <hr class="border-outline-variant my-2">
+      <div class="text-on-surface-muted">
         Data:
       </div>
-      <div>requestId: <span class="text-violet-300">{{ data?.requestId ?? '—' }}</span></div>
+      <div>requestId: <span class="text-primary">{{ data?.requestId ?? '—' }}</span></div>
       <div>fetchedAt: {{ data?.fetchedAt ?? '—' }}</div>
       <div>posts: {{ data?.posts?.length ?? '—' }} items</div>
     </div>
 
-    <p class="text-sm text-gray-500 border border-yellow-500/30 p-4 rounded-md">
+    <p class="text-sm text-on-surface-muted border border-outline p-4 rounded-md">
       Tip: In the browser DevTools Network tab, look for <code>x-nitro-cache: HIT</code> on
       subsequent requests within the 10-second window. That header is the clearest signal that
       Nitro's cache layer intercepted the request.

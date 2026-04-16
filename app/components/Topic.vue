@@ -32,17 +32,17 @@ const TOPIC_CARDS_AMOUNT = 4
 
 <template>
   <section>
-    <h3 class="mb-3 pb-3 border-b border-white/12">
+    <h3 class="mb-3 pb-3 border-b border-on-surface/12">
       <NuxtLink
         v-bind="$attrs"
         class="flex items-center justify-between gap-2 group hover:cursor-pointer"
         @click="say('Go to Topic!')"
       >
-        <span class="text-xs font-semibold tracking-wider uppercase text-white/75 group-hover:text-blue-300 transition-colors duration-fast">{{ widget?.title }}</span>
-        <span class="text-xs text-white/75 group-hover:text-blue-300 transition-colors duration-fast" aria-hidden="true">More →</span>
+        <span class="text-xs font-semibold tracking-wider uppercase text-on-surface/75 group-hover:text-primary transition-colors duration-fast">{{ widget?.title }}</span>
+        <span class="text-xs text-on-surface/75 group-hover:text-primary transition-colors duration-fast" aria-hidden="true">More →</span>
       </NuxtLink>
     </h3>
-    <div class="grid grid-cols-1 gap-1 divide-y divide-white/12">
+    <div class="grid grid-cols-1 gap-1 divide-y divide-on-surface/12">
       <Card
         :key="`md-${widgetId}`"
         variant="md"

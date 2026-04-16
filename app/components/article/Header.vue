@@ -25,30 +25,30 @@ const { data } = await useAsyncData('article-header', () =>
 </script>
 
 <template>
-  <div class="space-y-5 pb-8 border-b border-white/10">
+  <div class="space-y-5 pb-8 border-b border-outline-variant">
     <!-- Journal badge -->
     <div class="flex items-center gap-3 flex-wrap">
-      <span class="text-xs font-semibold uppercase tracking-widest text-indigo-400 bg-indigo-400/10 border border-indigo-400/20 px-2.5 py-1 rounded">
+      <span class="text-xs font-semibold uppercase tracking-widest text-primary bg-primary/10 border border-primary/20 px-2.5 py-1 rounded">
         {{ data?.journal }}
       </span>
-      <span class="text-xs text-slate-500">{{ data?.volume }}</span>
-      <span class="text-xs text-slate-500">DOI: {{ data?.doi }}</span>
+      <span class="text-xs text-on-surface-muted">{{ data?.volume }}</span>
+      <span class="text-xs text-on-surface-muted">DOI: {{ data?.doi }}</span>
     </div>
 
     <!-- Title -->
-    <h1 class="text-2xl lg:text-3xl font-bold text-slate-50 leading-snug">
+    <h1 class="text-2xl lg:text-3xl font-bold text-on-surface leading-snug">
       {{ data?.title }}
     </h1>
 
     <!-- Authors -->
-    <div class="text-sm text-slate-300 space-y-1">
+    <div class="text-sm text-on-surface-variant space-y-1">
       <p>
         <span
           v-for="(author, i) in data?.authors"
           :key="author.name"
-        >{{ author.name }}<sup class="text-indigo-400 text-[10px]">{{ author.affiliation }}</sup><span v-if="i < (data?.authors.length ?? 0) - 1">, </span></span>
+        >{{ author.name }}<sup class="text-primary text-[10px]">{{ author.affiliation }}</sup><span v-if="i < (data?.authors.length ?? 0) - 1">, </span></span>
       </p>
-      <ul class="text-xs text-slate-500 space-y-0.5 mt-2">
+      <ul class="text-xs text-on-surface-muted space-y-0.5 mt-2">
         <li v-for="aff in data?.affiliations" :key="aff">{{ aff }}</li>
       </ul>
     </div>
@@ -58,16 +58,16 @@ const { data } = await useAsyncData('article-header', () =>
       <span
         v-for="kw in data?.keywords"
         :key="kw"
-        class="text-xs bg-white/6 text-slate-300 border border-white/10 px-2 py-0.5 rounded-full"
+        class="text-xs bg-surface-container text-on-surface-variant border border-outline-variant px-2 py-0.5 rounded-full"
       >
         {{ kw }}
       </span>
     </div>
 
     <!-- Abstract -->
-    <div class="bg-white/4 border border-white/8 rounded-lg p-5 space-y-2">
-      <h2 class="text-xs font-semibold uppercase tracking-widest text-slate-400">Abstract</h2>
-      <p class="text-sm text-slate-200 leading-relaxed">{{ data?.abstract }}</p>
+    <div class="bg-surface-container border border-outline-variant rounded-lg p-5 space-y-2">
+      <h2 class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant">Abstract</h2>
+      <p class="text-sm text-on-surface leading-relaxed">{{ data?.abstract }}</p>
     </div>
   </div>
 </template>

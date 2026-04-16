@@ -48,76 +48,76 @@ interface PostResponse {
 
 <template>
   <div class="mx-auto max-w-5xl py-24 flex flex-col gap-6">
-    <NuxtLink to="/fetch" class="text-lg font-bold text-violet-400 hover:underline">
+    <NuxtLink to="/fetch" class="text-lg font-bold text-primary hover:underline">
       Back to play
     </NuxtLink>
 
-    <h1 class="text-5xl">
+    <h1 class="text-5xl font-bold tracking-tight text-on-surface">
       Key deduplication
     </h1>
-    <p class="text-xl">
+    <p class="text-xl text-on-surface-variant leading-relaxed">
       Two <code>useAsyncData</code> calls with the same key share a single request and reactive state.
       <br>A third with a different key is independent.
     </p>
 
     <div class="grid grid-cols-3 gap-6">
       <!-- A -->
-      <div class="flex flex-col gap-3 border border-violet-500/30 p-6 rounded-md">
-        <h2 class="text-lg font-bold text-violet-400">
+      <div class="flex flex-col gap-3 border border-primary/30 p-6 rounded-md">
+        <h2 class="text-lg font-bold text-primary">
           A — key: <code>'post-1'</code>
         </h2>
-        <p :class="[pendingA ? 'text-rose-300' : 'text-green-300']">
+        <p :class="[pendingA ? 'text-error' : 'text-positive']">
           {{ pendingA ? 'Loading...' : 'Loaded' }}
         </p>
-        <div class="border border-olive-600 p-4 font-mono text-sm flex flex-col gap-1">
-          <div>fetchCount: <ClientOnly><span class="text-violet-300">{{ fetchCountA }}</span></ClientOnly></div>
+        <div class="border border-outline p-4 font-mono text-sm flex flex-col gap-1">
+          <div>fetchCount: <ClientOnly><span class="text-primary">{{ fetchCountA }}</span></ClientOnly></div>
           <div>requestId: {{ dataA?.requestId ?? '—' }}</div>
           <div>fetchedAt: {{ dataA?.fetchedAt ?? '—' }}</div>
         </div>
-        <button class="text-xs text-gray-500 underline hover:no-underline self-start" @click="refreshA()">
+        <button class="text-xs text-on-surface-muted underline hover:no-underline self-start" @click="refreshA()">
           Refresh A
         </button>
       </div>
 
       <!-- B -->
-      <div class="flex flex-col gap-3 border border-violet-500/30 p-6 rounded-md">
-        <h2 class="text-lg font-bold text-violet-400">
+      <div class="flex flex-col gap-3 border border-primary/30 p-6 rounded-md">
+        <h2 class="text-lg font-bold text-primary">
           B — key: <code>'post-1'</code> (same)
         </h2>
-        <p :class="[pendingB ? 'text-rose-300' : 'text-green-300']">
+        <p :class="[pendingB ? 'text-error' : 'text-positive']">
           {{ pendingB ? 'Loading...' : 'Loaded' }}
         </p>
-        <div class="border border-olive-600 p-4 font-mono text-sm flex flex-col gap-1">
-          <div>fetchCount: <ClientOnly><span class="text-violet-300">{{ fetchCountB }}</span> ← stays 0</ClientOnly></div>
+        <div class="border border-outline p-4 font-mono text-sm flex flex-col gap-1">
+          <div>fetchCount: <ClientOnly><span class="text-primary">{{ fetchCountB }}</span> ← stays 0</ClientOnly></div>
           <div>requestId: {{ dataB?.requestId ?? '—' }}</div>
           <div>fetchedAt: {{ dataB?.fetchedAt ?? '—' }}</div>
         </div>
-        <p class="text-xs text-gray-500">
+        <p class="text-xs text-on-surface-muted">
           B's callback never fires. It piggybacks on A's result.
           <br>Refresh A → B's data updates too.
         </p>
       </div>
 
       <!-- C -->
-      <div class="flex flex-col gap-3 border border-blue-500/30 p-6 rounded-md">
-        <h2 class="text-lg font-bold text-blue-400">
+      <div class="flex flex-col gap-3 border border-primary/30 p-6 rounded-md">
+        <h2 class="text-lg font-bold text-primary">
           C — key: <code>'post-1-b'</code> (different)
         </h2>
-        <p :class="[pendingC ? 'text-rose-300' : 'text-green-300']">
+        <p :class="[pendingC ? 'text-error' : 'text-positive']">
           {{ pendingC ? 'Loading...' : 'Loaded' }}
         </p>
-        <div class="border border-olive-600 p-4 font-mono text-sm flex flex-col gap-1">
-          <div>fetchCount: <ClientOnly><span class="text-blue-300">{{ fetchCountC }}</span></ClientOnly></div>
+        <div class="border border-outline p-4 font-mono text-sm flex flex-col gap-1">
+          <div>fetchCount: <ClientOnly><span class="text-primary">{{ fetchCountC }}</span></ClientOnly></div>
           <div>requestId: {{ dataC?.requestId ?? '—' }}</div>
           <div>fetchedAt: {{ dataC?.fetchedAt ?? '—' }}</div>
         </div>
-        <button class="text-xs text-gray-500 underline hover:no-underline self-start" @click="refreshC()">
+        <button class="text-xs text-on-surface-muted underline hover:no-underline self-start" @click="refreshC()">
           Refresh C
         </button>
       </div>
     </div>
 
-    <p class="text-sm text-gray-500 border border-yellow-500/30 p-4 rounded-md">
+    <p class="text-sm text-on-surface-muted border border-outline p-4 rounded-md">
       Gotcha: using the same key on different pages means the second page inherits the first page's
       cached payload — even if the data should be different. Always use unique, descriptive keys.
     </p>

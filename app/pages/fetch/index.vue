@@ -24,78 +24,78 @@ console.log('/fetch')
 
 <template>
   <div class="mx-auto max-w-5xl py-24 grid grid-cols-4 gap-10">
-    <div class="rounded-md bg-blue-300/12 p-6 aspect-square flex flex-col gap-1 justify-center">
-      <NuxtLink to="/fetch/async-data" class="text-lg font-bold text-blue-400 hover:underline">
+    <div class="rounded-md bg-primary/12 p-6 aspect-square flex flex-col gap-1 justify-center">
+      <NuxtLink to="/fetch/async-data" class="text-lg font-bold text-primary hover:underline">
         useAsyncData
       </NuxtLink>
-      <small>(non-blocking)</small>
+      <small class="text-xs text-on-surface-muted">(non-blocking)</small>
     </div>
-    <div class="rounded-md bg-blue-300/12 p-6 aspect-square flex flex-col gap-1 justify-center">
-      <NuxtLink to="/fetch/await-async-data" class="text-lg font-bold text-blue-400 hover:underline">
+    <div class="rounded-md bg-primary/12 p-6 aspect-square flex flex-col gap-1 justify-center">
+      <NuxtLink to="/fetch/await-async-data" class="text-lg font-bold text-primary hover:underline">
         await useAsyncData
       </NuxtLink>
-      <small>(blocking)</small>
+      <small class="text-xs text-on-surface-muted">(blocking)</small>
     </div>
-    <div class="rounded-md bg-lime-300/12 p-6 aspect-square flex flex-col gap-1 justify-center">
-      <NuxtLink to="/fetch/fetch" class="text-lg font-bold text-lime-400 hover:underline">
+    <div class="rounded-md bg-secondary/12 p-6 aspect-square flex flex-col gap-1 justify-center">
+      <NuxtLink to="/fetch/fetch" class="text-lg font-bold text-secondary hover:underline">
         useFetch
       </NuxtLink>
-      <small>(non-blocking)</small>
+      <small class="text-xs text-on-surface-muted">(non-blocking)</small>
     </div>
-    <div class="rounded-md bg-lime-300/12 p-6 aspect-square flex flex-col gap-1 justify-center">
-      <NuxtLink to="/fetch/await-fetch" class="text-lg font-bold text-lime-400 hover:underline">
+    <div class="rounded-md bg-secondary/12 p-6 aspect-square flex flex-col gap-1 justify-center">
+      <NuxtLink to="/fetch/await-fetch" class="text-lg font-bold text-secondary hover:underline">
         await useFetch
       </NuxtLink>
-      <small>(blocking)</small>
+      <small class="text-xs text-on-surface-muted">(blocking)</small>
     </div>
-    <div class="rounded-md bg-orange-300/12 p-6 aspect-square flex flex-col gap-1 justify-center">
-      <NuxtLink to="/fetch/await-lazy-fetch" class="text-lg font-bold text-orange-400 hover:underline">
+    <div class="rounded-md bg-tertiary/12 p-6 aspect-square flex flex-col gap-1 justify-center">
+      <NuxtLink to="/fetch/await-lazy-fetch" class="text-lg font-bold text-tertiary hover:underline">
         await useLazyFetch
       </NuxtLink>
-      <small>(non-blocking)</small>
+      <small class="text-xs text-on-surface-muted">(non-blocking)</small>
     </div>
-    <div class="rounded-md bg-pink-300/12 p-6 aspect-square flex flex-col gap-1 justify-center">
-      <NuxtLink to="/fetch/suspense" class="text-lg font-bold text-pink-400 hover:underline">
+    <div class="rounded-md bg-tertiary/12 p-6 aspect-square flex flex-col gap-1 justify-center">
+      <NuxtLink to="/fetch/suspense" class="text-lg font-bold text-tertiary hover:underline">
         Suspense
       </NuxtLink>
-      <small>(non-blocking)</small>
+      <small class="text-xs text-on-surface-muted">(non-blocking)</small>
     </div>
-    <div class="rounded-md bg-violet-300/12 p-6 aspect-square flex flex-col gap-1 justify-center">
-      <NuxtLink to="/fetch/cache-nitro" class="text-lg font-bold text-violet-400 hover:underline">
+    <div class="rounded-md bg-primary/12 p-6 aspect-square flex flex-col gap-1 justify-center">
+      <NuxtLink to="/fetch/cache-nitro" class="text-lg font-bold text-primary hover:underline">
         Nitro cache
       </NuxtLink>
-      <small>(defineCachedEventHandler)</small>
+      <small class="text-xs text-on-surface-muted">(defineCachedEventHandler)</small>
     </div>
-    <div class="rounded-md bg-violet-300/12 p-6 aspect-square flex flex-col gap-1 justify-center">
-      <NuxtLink to="/fetch/cache-key-dedup" class="text-lg font-bold text-violet-400 hover:underline">
+    <div class="rounded-md bg-primary/12 p-6 aspect-square flex flex-col gap-1 justify-center">
+      <NuxtLink to="/fetch/cache-key-dedup" class="text-lg font-bold text-primary hover:underline">
         Key deduplication
       </NuxtLink>
-      <small>(useAsyncData key gotcha)</small>
+      <small class="text-xs text-on-surface-muted">(useAsyncData key gotcha)</small>
     </div>
-    <div class="rounded-md bg-violet-300/12 p-6 aspect-square flex flex-col gap-1 justify-center">
-      <NuxtLink to="/fetch/cache-client" class="text-lg font-bold text-violet-400 hover:underline">
+    <div class="rounded-md bg-primary/12 p-6 aspect-square flex flex-col gap-1 justify-center">
+      <NuxtLink to="/fetch/cache-client" class="text-lg font-bold text-primary hover:underline">
         getCachedData
       </NuxtLink>
-      <small>(client-side cache control)</small>
+      <small class="text-xs text-on-surface-muted">(client-side cache control)</small>
     </div>
-    <div class="rounded-md bg-violet-300/12 p-6 aspect-square flex flex-col gap-1 justify-center">
-      <NuxtLink to="/fetch/cache-headers" class="text-lg font-bold text-violet-400 hover:underline">
+    <div class="rounded-md bg-primary/12 p-6 aspect-square flex flex-col gap-1 justify-center">
+      <NuxtLink to="/fetch/cache-headers" class="text-lg font-bold text-primary hover:underline">
         Cache headers
       </NuxtLink>
-      <small>(HTTP response headers)</small>
+      <small class="text-xs text-on-surface-muted">(HTTP response headers)</small>
     </div>
-    <div class="rounded-md bg-violet-300/12 p-6 aspect-square flex flex-col gap-1 justify-center">
-      <NuxtLink to="/fetch/my-cache" class="text-lg font-bold text-violet-400 hover:underline">
+    <div class="rounded-md bg-primary/12 p-6 aspect-square flex flex-col gap-1 justify-center">
+      <NuxtLink to="/fetch/my-cache" class="text-lg font-bold text-primary hover:underline">
         My cache
       </NuxtLink>
-      <small>(non-blocking)</small>
+      <small class="text-xs text-on-surface-muted">(non-blocking)</small>
     </div>
-    <div class="col-span-3 mt-900 mx-auto max-w-lg rounded-sm bg-blue-300/12 p-6 aspect-square flex flex-col gap-1 justify-center">
+    <div class="col-span-3 mx-auto max-w-lg rounded-sm bg-primary/12 p-6 aspect-square flex flex-col gap-1 justify-center">
       <img
         src="https://random.danielpetrica.com/api/random?size=small"
         alt="A random image different from the others"
         loading="lazy"
-        class="w-full aspect-square object-cover rounded-sm bg-container-primary"
+        class="w-full aspect-square object-cover rounded-sm bg-primary-container"
       >
       <code>lazy images won't load until they come into the viewport</code>
     </div>

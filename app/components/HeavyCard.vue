@@ -32,18 +32,18 @@ const {
 
 <template>
   <div>
-    <p :class="[pending ? 'text-rose-300' : 'text-green-300']">
+    <p :class="[pending ? 'text-error' : 'text-positive']">
       {{ pending ? 'Loading...' : 'Loaded' }}
     </p>
     <p>
       <code>{{ error }}</code>
     </p>
     <p>
-      <button class="text-xs text-gray-500 underline hover:no-underline" @click="refresh()">
+      <button class="text-xs text-on-surface-muted underline hover:no-underline" @click="refresh()">
         Refresh
       </button>
     </p>
-    <pre class="text-xs text-pink-400">
+    <pre class="text-xs text-tertiary">
 {{ data }}
   </pre>
   </div>

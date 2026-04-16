@@ -37,62 +37,62 @@ function refreshBoth() {
 
 <template>
   <div class="mx-auto max-w-5xl py-24 flex flex-col gap-6">
-    <NuxtLink to="/fetch" class="text-lg font-bold text-violet-400 hover:underline">
+    <NuxtLink to="/fetch" class="text-lg font-bold text-primary hover:underline">
       Back to play
     </NuxtLink>
 
-    <h1 class="text-5xl">
+    <h1 class="text-5xl font-bold tracking-tight text-on-surface">
       Nitro cache
     </h1>
-    <p class="text-xl">
+    <p class="text-xl text-on-surface-variant leading-relaxed">
       Side-by-side: uncached vs <code>defineCachedEventHandler</code> (10s TTL).
       <br>Refresh repeatedly — the cached panel's <code>requestId</code> freezes until the TTL expires.
     </p>
 
     <div class="flex gap-4">
       <button
-        class="text-xs text-gray-500 underline hover:no-underline"
+        class="text-xs text-on-surface-muted underline hover:no-underline"
         @click="refreshBoth()"
       >
         Refresh both
       </button>
-      <span v-if="clientRefreshedAt" class="text-xs text-gray-500">
+      <span v-if="clientRefreshedAt" class="text-xs text-on-surface-muted">
         You refreshed at {{ clientRefreshedAt }}
       </span>
     </div>
 
     <div class="grid grid-cols-2 gap-6">
       <!-- Uncached -->
-      <div class="flex flex-col gap-3 border border-rose-500/30 p-6 rounded-md">
-        <h2 class="text-lg font-bold text-rose-400">
+      <div class="flex flex-col gap-3 border border-error/30 p-6 rounded-md">
+        <h2 class="text-lg font-bold text-error">
           /api/posts <span class="font-normal text-sm">(uncached)</span>
         </h2>
-        <p class="text-xs text-gray-400">
+        <p class="text-xs text-on-surface-muted">
           defineEventHandler — hits JSONPlaceholder every time
         </p>
-        <p :class="[uncachedPending ? 'text-rose-300' : 'text-green-300']">
+        <p :class="[uncachedPending ? 'text-error' : 'text-positive']">
           {{ uncachedPending ? 'Loading...' : 'Loaded' }}
         </p>
-        <div class="border border-olive-600 p-4 font-mono text-sm flex flex-col gap-1">
-          <div>requestId: <span class="text-rose-300">{{ uncached?.requestId ?? '—' }}</span></div>
+        <div class="border border-outline p-4 font-mono text-sm flex flex-col gap-1">
+          <div>requestId: <span class="text-error">{{ uncached?.requestId ?? '—' }}</span></div>
           <div>fetchedAt: {{ uncached?.fetchedAt ?? '—' }}</div>
           <div>posts: {{ uncached?.posts?.length ?? '—' }} items</div>
         </div>
       </div>
 
       <!-- Cached -->
-      <div class="flex flex-col gap-3 border border-violet-500/30 p-6 rounded-md">
-        <h2 class="text-lg font-bold text-violet-400">
+      <div class="flex flex-col gap-3 border border-primary/30 p-6 rounded-md">
+        <h2 class="text-lg font-bold text-primary">
           /api/posts.cached <span class="font-normal text-sm">(10s TTL)</span>
         </h2>
-        <p class="text-xs text-gray-400">
+        <p class="text-xs text-on-surface-muted">
           defineCachedEventHandler — same requestId for up to 10 seconds
         </p>
-        <p :class="[cachedPending ? 'text-rose-300' : 'text-green-300']">
+        <p :class="[cachedPending ? 'text-error' : 'text-positive']">
           {{ cachedPending ? 'Loading...' : 'Loaded' }}
         </p>
-        <div class="border border-olive-600 p-4 font-mono text-sm flex flex-col gap-1">
-          <div>requestId: <span class="text-violet-300">{{ cached?.requestId ?? '—' }}</span></div>
+        <div class="border border-outline p-4 font-mono text-sm flex flex-col gap-1">
+          <div>requestId: <span class="text-primary">{{ cached?.requestId ?? '—' }}</span></div>
           <div>fetchedAt: {{ cached?.fetchedAt ?? '—' }}</div>
           <div>posts: {{ cached?.posts?.length ?? '—' }} items</div>
         </div>

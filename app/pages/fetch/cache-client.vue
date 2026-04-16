@@ -87,62 +87,62 @@ function refreshForce() {
 
 <template>
   <div class="mx-auto max-w-5xl py-24 flex flex-col gap-6">
-    <NuxtLink to="/fetch" class="text-lg font-bold text-violet-400 hover:underline">
+    <NuxtLink to="/fetch" class="text-lg font-bold text-primary hover:underline">
       Back to play
     </NuxtLink>
 
-    <h1 class="text-5xl">
+    <h1 class="text-5xl font-bold tracking-tight text-on-surface">
       getCachedData
     </h1>
-    <p class="text-xl">
+    <p class="text-xl text-on-surface-variant leading-relaxed">
       Control whether <code>useFetch</code> makes a real network request or returns stale data.
       <br>30-second client-side TTL stored in a page-scoped <code>Map</code>.
     </p>
 
     <div class="flex gap-4 items-center">
       <button
-        class="text-xs text-gray-500 underline hover:no-underline"
+        class="text-xs text-on-surface-muted underline hover:no-underline"
         @click="refreshCached()"
       >
         Refresh (cached)
       </button>
       <button
-        class="text-xs text-rose-400 underline hover:no-underline"
+        class="text-xs text-error underline hover:no-underline"
         @click="refreshForce()"
       >
         Refresh (force)
       </button>
     </div>
 
-    <p :class="[pending ? 'text-rose-300' : 'text-green-300']">
+    <p :class="[pending ? 'text-error' : 'text-positive']">
       {{ pending ? 'Loading...' : 'Loaded' }}
     </p>
 
-    <div class="border border-olive-600 p-6 font-mono text-sm flex flex-col gap-2">
+    <div class="border border-outline p-6 font-mono text-sm flex flex-col gap-2">
       <div>
         last request:
         <span
-          :class="lastFetchType === 'CACHE HIT' ? 'text-violet-300' : 'text-rose-300'"
+          :class="lastFetchType === 'CACHE HIT' ? 'text-primary' : 'text-error'"
           class="font-bold"
         >
           {{ lastFetchType ?? '—' }}
         </span>
       </div>
-      <div>fetch count (real network): <span class="text-rose-300">{{ fetchCount }}</span></div>
+      <div>fetch count (real network): <span class="text-error">{{ fetchCount }}</span></div>
       <div>
         cache age:
-        <span class="text-violet-300">
+        <span class="text-primary">
           {{ cacheAgeSeconds !== null ? `${cacheAgeSeconds}s` : '—' }}
         </span>
-        <span class="text-gray-500 text-xs"> (TTL: 30s)</span>
+        <span class="text-on-surface-muted text-xs"> (TTL: 30s)</span>
       </div>
-      <hr class="border-gray-700 my-1">
+      <hr class="border-outline-variant my-1">
       <div>requestId: {{ data?.requestId ?? '—' }}</div>
       <div>fetchedAt: {{ data?.fetchedAt ?? '—' }}</div>
       <div>title: {{ data?.post?.title ?? '—' }}</div>
     </div>
 
-    <p class="text-sm text-gray-500 border border-yellow-500/30 p-4 rounded-md">
+    <p class="text-sm text-on-surface-muted border border-outline p-4 rounded-md">
       SSR note: <code>getCachedData</code> always returns <code>undefined</code> on the first server
       render because the client cache is empty. The interesting behavior starts on client-side
       refreshes after the first load.

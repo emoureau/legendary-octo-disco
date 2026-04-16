@@ -5,35 +5,40 @@ const contacts = [
     email: 'e.vasquez@institute.org',
     phone: '+1 (617) 555-0142',
     initials: 'EV',
-    color: 'bg-indigo-500',
+    bgClass: 'bg-primary',
+    fgClass: 'text-on-primary',
   },
   {
     name: 'Prof. James Okafor',
     email: 'j.okafor@university.edu',
     phone: '+1 (312) 555-0287',
     initials: 'JO',
-    color: 'bg-emerald-500',
+    bgClass: 'bg-secondary',
+    fgClass: 'text-on-secondary',
   },
   {
     name: 'Dr. Mei-Lin Chen',
     email: 'm.chen@researchlab.net',
     phone: null,
     initials: 'MC',
-    color: 'bg-rose-500',
+    bgClass: 'bg-error',
+    fgClass: 'text-on-error',
   },
   {
     name: 'Thomas Brandt',
     email: 't.brandt@eu-consortium.eu',
     phone: '+49 30 555 0193',
     initials: 'TB',
-    color: 'bg-amber-500',
+    bgClass: 'bg-tertiary',
+    fgClass: 'text-on-tertiary',
   },
   {
     name: 'Dr. Aisha Ndiaye',
     email: 'a.ndiaye@globalhealth.org',
     phone: null,
     initials: 'AN',
-    color: 'bg-violet-500',
+    bgClass: 'bg-primary-container',
+    fgClass: 'text-on-primary-container',
   },
 ]
 
@@ -62,7 +67,7 @@ const metadata = [
   <section class="mx-4 lg:mx-6 space-y-10">
     <!-- Points of Contact -->
     <div>
-      <h2 class="text-sm font-semibold uppercase tracking-widest text-slate-400 mb-4">
+      <h2 class="text-sm font-semibold uppercase tracking-widest text-on-surface-variant mb-4">
         Points of Contact
       </h2>
       <ul class="space-y-3">
@@ -72,19 +77,19 @@ const metadata = [
           class="flex items-center gap-4"
         >
           <span
-            class="shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold text-white select-none"
-            :class="poc.color"
+            class="shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold select-none"
+            :class="[poc.bgClass, poc.fgClass]"
           >
             {{ poc.initials }}
           </span>
           <div class="min-w-0">
-            <p class="text-sm font-medium text-slate-100 truncate">
+            <p class="text-sm font-medium text-on-surface truncate">
               {{ poc.name }}
             </p>
-            <p class="text-xs text-slate-400 truncate">
+            <p class="text-xs text-on-surface-variant truncate">
               {{ poc.email }}
             </p>
-            <p v-if="poc.phone" class="text-xs text-slate-500">
+            <p v-if="poc.phone" class="text-xs text-on-surface-muted">
               {{ poc.phone }}
             </p>
           </div>
@@ -94,7 +99,7 @@ const metadata = [
 
     <!-- External Resources -->
     <div>
-      <h2 class="text-sm font-semibold uppercase tracking-widest text-slate-400 mb-4">
+      <h2 class="text-sm font-semibold uppercase tracking-widest text-on-surface-variant mb-4">
         External Resources
       </h2>
       <ul class="space-y-2">
@@ -103,7 +108,7 @@ const metadata = [
             :href="res.href"
             target="_blank"
             rel="noopener noreferrer"
-            class="text-sm text-indigo-400 hover:text-indigo-300 hover:underline transition-colors"
+            class="text-sm text-primary hover:text-primary/70 hover:underline transition-colors"
           >
             {{ res.label }}
           </a>
@@ -113,7 +118,7 @@ const metadata = [
 
     <!-- Article Metadata -->
     <div>
-      <h2 class="text-sm font-semibold uppercase tracking-widest text-slate-400 mb-4">
+      <h2 class="text-sm font-semibold uppercase tracking-widest text-on-surface-variant mb-4">
         Article Metadata
       </h2>
       <table class="w-full text-sm border-collapse">
@@ -121,12 +126,12 @@ const metadata = [
           <tr
             v-for="([label, value], i) in metadata"
             :key="label"
-            :class="i % 2 === 0 ? 'bg-white/4' : ''"
+            :class="i % 2 === 0 ? 'bg-surface-container' : ''"
           >
-            <td class="py-2 px-3 text-slate-400 font-semibold whitespace-nowrap w-1/3">
+            <td class="py-2 px-3 text-on-surface-variant font-semibold whitespace-nowrap w-1/3">
               {{ label }}
             </td>
-            <td class="py-2 px-3 text-slate-100 break-all">
+            <td class="py-2 px-3 text-on-surface break-all">
               {{ value }}
             </td>
           </tr>

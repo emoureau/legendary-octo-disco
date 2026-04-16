@@ -5,17 +5,17 @@ const SMALL_CARDS_AMOUNT = 8
 <template>
   <section class="flex flex-col gap-6">
     <div class="flex items-center gap-4 mx-1 lg:mx-6">
-      <div class="flex-1 h-px bg-white/12" />
+      <div class="flex-1 h-px bg-on-surface/12" />
       <h2 id="latest-heading" class="text-sm font-semibold tracking-wider uppercase text-on-surface-muted px-2">
         <NuxtLink to="/" class="ml-auto text-link flex items-center gap-1 group hover:link-hover hover:underline">
           Latest  →
         </NuxtLink>
       </h2>
-      <div class="flex-1 h-px bg-white/12" />
+      <div class="flex-1 h-px bg-on-surface/12" />
     </div>
 
     <div
-      class="grid grid-cols-1 lg:grid-cols-2 lg:divide-x lg:divide-white/12 mx-4 lg:mx-6"
+      class="grid grid-cols-1 lg:grid-cols-2 lg:divide-x lg:divide-on-surface/12 mx-4 lg:mx-6"
     >
       <div>
         <Card
