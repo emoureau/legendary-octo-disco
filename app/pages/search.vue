@@ -26,11 +26,11 @@ const filters: Filter[] = [
   { label: 'Language', options: ['English', 'Spanish', 'French', 'German', 'Mandarin', 'Arabic'] },
   { label: 'Format', options: ['News', 'Analysis', 'Commentary', 'Investigation', 'Review', 'Profile'] },
   { label: 'Country', options: ['United States', 'United Kingdom', 'France', 'Germany', 'China', 'Russia', 'India', 'Brazil'] },
-  { label: 'Series', options: ['The Long Read', 'Global Dispatch', 'Market Watch', "Critics' Picks", 'Weekend Guide'] },
+  { label: 'Series', options: ['The Long Read', 'Global Dispatch', 'Market Watch', 'Critics\' Picks', 'Weekend Guide'] },
   { label: 'Tags', options: ['Climate', 'Artificial Intelligence', 'Elections', 'War & Conflict', 'Healthcare', 'Housing Crisis', 'Immigration', 'Trade', 'Inflation', 'Surveillance'] },
   { label: 'Media Type', options: ['Text only', 'Has images', 'Has video', 'Has audio', 'Interactive'] },
   { label: 'Contributor Type', options: ['Staff writer', 'Senior correspondent', 'Guest contributor', 'Wire service'] },
-  { label: 'Awards & Honors', options: ["Editor's pick", "Critics' choice", 'Staff pick', 'Award nominated', 'Award winner'] },
+  { label: 'Awards & Honors', options: ['Editor\'s pick', 'Critics\' choice', 'Staff pick', 'Award nominated', 'Award winner'] },
   { label: 'Industry', options: ['Technology', 'Finance', 'Healthcare', 'Energy', 'Real Estate', 'Retail'] },
   { label: 'Organization', options: ['United Nations', 'NATO', 'European Union', 'World Bank', 'IMF', 'WHO'] },
   { label: 'Publication Status', options: ['Published', 'Developing story', 'Archived'] },
@@ -72,7 +72,7 @@ function toggleOption(filterLabel: string, option: string) {
 }
 
 const activeFilterCount = computed(() =>
-  Object.values(selectedFilters.value).reduce((sum, arr) => sum + arr.length, 0)
+  Object.values(selectedFilters.value).reduce((sum, arr) => sum + arr.length, 0),
 )
 
 function clearAll() {
@@ -94,38 +94,40 @@ const results = [
   { title: 'Federal Reserve Signals Extended Pause as Inflation Stays Stubborn', summary: false },
   { title: 'Cannes Dispatch: A Decade of Quiet Cinema Arrives All at Once', summary: false },
   { title: 'What the West Gets Wrong About Authoritarian Resilience', summary: false },
-  { title: "Africa's Debt Burden Reaches Critical Threshold, IMF Warns", summary: false },
+  { title: 'Africa\'s Debt Burden Reaches Critical Threshold, IMF Warns', summary: false },
   { title: 'Ocean Temperatures Hit Record High for the Fourth Consecutive Year', summary: false },
   { title: 'A New Generation of Chefs Is Rewriting What Regional Cuisine Means', summary: false },
   { title: 'Private Equity Retreats From Commercial Real Estate Amid Rate Pressure', summary: false },
   { title: 'How Hip-Hop Became the Language of Global Political Protest', summary: false },
-  { title: "Architecture's New Obsession: Buildings That Disappear Into Landscape", summary: false },
+  { title: 'Architecture\'s New Obsession: Buildings That Disappear Into Landscape', summary: false },
   { title: 'The Return of the Third Place, and Why It Matters More Than Ever', summary: false },
 ]
 </script>
 
 <template>
-  <div class="min-h-screen bg-mauve-900">
+  <div class="min-h-screen">
     <EditorialNav :show-logo="true" />
 
     <!-- Page heading (intersection target) -->
     <div class="max-w-9xl mx-auto px-6 pt-12 pb-8 border-b border-on-surface/12">
-      <h1 class="text-4xl font-bold text-white tracking-tight mb-8">Search</h1>
+      <h1 class="text-4xl font-bold text-on-surface tracking-tight mb-8">
+        Search
+      </h1>
 
       <!-- Search bar -->
-      <div class="flex flex-col gap-3">
+      <div class="flex flex-col">
         <!-- Mode toggle -->
-        <div class="flex items-center gap-1 self-start bg-mauve-800 rounded p-0.5">
+        <div class="flex items-center gap-1 self-start p-0.5">
           <button
-            class="px-3 py-1 rounded text-xs font-mono tracking-widest uppercase transition-colors"
-            :class="searchMode === 'basic' ? 'bg-mauve-600 text-white' : 'text-mauve-400 hover:text-white'"
+            class="px-3 py-1 rounded-t-lg rounded-b-none -mb-1 text-xs font-mono tracking-widest uppercase transition-colors"
+            :class="searchMode === 'basic' ? 'bg-primary-container text-on-primary-container' : 'text-on-surface-variant hover:text-on-surface'"
             @click="searchMode = 'basic'"
           >
             Basic
           </button>
           <button
-            class="px-3 py-1 rounded text-xs font-mono tracking-widest uppercase transition-colors"
-            :class="searchMode === 'advanced' ? 'bg-mauve-600 text-white' : 'text-mauve-400 hover:text-white'"
+            class="px-3 py-1 rounded-t-lg rounded-b-none -mb-1 text-xs font-mono tracking-widest uppercase transition-colors"
+            :class="searchMode === 'advanced' ? 'bg-primary-container text-on-primary-container' : 'text-on-surface-variant hover:text-on-surface'"
             @click="searchMode = 'advanced'"
           >
             Advanced
@@ -133,43 +135,43 @@ const results = [
         </div>
 
         <!-- Basic input -->
-        <div v-if="searchMode === 'basic'" class="flex items-center gap-3">
-          <div class="flex-1 flex items-center gap-3 bg-mauve-800 border border-mauve-600 rounded-lg px-4 h-12 focus-within:border-mauve-400 transition-colors">
-            <svg class="w-4 h-4 text-mauve-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <div v-if="searchMode === 'basic'" class="flex items-center gap-3 bg-surface-container-low">
+          <div class="flex-1 flex items-center gap-3 border border-outline rounded-lg px-4 h-12 focus-within:border-outline-variant transition-colors">
+            <svg class="w-4 h-4 text-on-surface-variant shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" />
             </svg>
             <input
               v-model="basicQuery"
               type="search"
               placeholder="Search articles, topics, authors…"
-              class="flex-1 bg-transparent text-white placeholder-mauve-500 outline-none text-sm"
+              class="flex-1 bg-transparent text-on-surface placeholder-on-surface-muted outline-none text-sm"
             >
           </div>
-          <button class="h-12 px-6 bg-mauve-500 hover:bg-mauve-400 text-white text-sm font-medium rounded-lg transition-colors">
+          <button class="h-12 px-6 bg-primary hover:bg-primary/75 text-on-primary text-sm font-medium rounded-lg transition-colors">
             Search
           </button>
         </div>
 
         <!-- Advanced input -->
         <div v-else class="flex flex-col gap-2">
-          <div class="bg-mauve-800 border border-mauve-600 rounded-lg focus-within:border-mauve-400 transition-colors">
+          <div class="bg-surface-container-lowest border border-outline rounded-lg focus-within:border-outline-variant transition-colors">
             <textarea
               v-model="advancedQuery"
               rows="3"
-              placeholder='section:World AND type:feature NOT author:"Tom Schreiber" AND date:>2025-01-01'
-              class="w-full bg-transparent text-white placeholder-mauve-500 outline-none text-sm font-mono p-4 resize-none"
+              placeholder="section:World AND type:feature NOT author:&quot;Tom Schreiber&quot; AND date:>2025-01-01"
+              class="w-full bg-transparent text-on-surface placeholder-on-surface-muted outline-none text-sm font-mono p-4 resize-none"
             />
-            <div class="flex items-center justify-between px-4 py-2 border-t border-mauve-700">
-              <p class="text-xs text-mauve-500">
-                Operators: <span class="text-mauve-300">AND &nbsp;OR &nbsp;NOT &nbsp;( ) &nbsp;" " &nbsp;field:value &nbsp;date:>YYYY-MM-DD</span>
+            <div class="flex items-center justify-between px-4 py-2 border-t border-outline-variant">
+              <p class="text-xs text-on-surface-variant">
+                Operators: <span class="text-on-surface">AND &nbsp;OR &nbsp;NOT &nbsp;( ) &nbsp;" " &nbsp;field:value &nbsp;date:>YYYY-MM-DD</span>
               </p>
-              <button class="h-8 px-4 bg-mauve-500 hover:bg-mauve-400 text-white text-xs font-medium rounded transition-colors">
+              <button class="h-8 px-4 bg-primary hover:bg-primary/75 text-on-primary text-xs font-medium rounded transition-colors">
                 Run query
               </button>
             </div>
           </div>
-          <p class="text-xs text-mauve-500">
-            Fields: <span class="text-mauve-400">section &nbsp;type &nbsp;author &nbsp;topic &nbsp;region &nbsp;tag &nbsp;date &nbsp;access &nbsp;lang &nbsp;format</span>
+          <p class="text-xs text-on-surface-variant">
+            Fields: <span class="text-on-surface-variant">section &nbsp;type &nbsp;author &nbsp;topic &nbsp;region &nbsp;tag &nbsp;date &nbsp;access &nbsp;lang &nbsp;format</span>
           </p>
         </div>
       </div>
@@ -178,18 +180,17 @@ const results = [
     <!-- Results + Filters -->
     <div class="max-w-9xl mx-auto px-6 py-8">
       <div class="grid grid-cols-1 lg:grid-cols-4 gap-10 lg:gap-0 lg:divide-x divide-on-surface/12">
-
         <!-- Results -->
         <main class="lg:col-span-3 lg:pr-10">
           <!-- Result count + active filters -->
           <div class="flex items-center justify-between mb-6">
-            <p class="text-sm text-mauve-400">
-              <span class="text-white font-medium">{{ results.length }}</span> results
+            <p class="text-sm text-on-surface-variant">
+              <span class="text-on-surface font-medium">{{ results.length }}</span> results
               <span v-if="activeFilterCount > 0"> &middot; {{ activeFilterCount }} filter{{ activeFilterCount !== 1 ? 's' : '' }} active</span>
             </p>
             <button
               v-if="activeFilterCount > 0"
-              class="text-xs font-mono tracking-widest uppercase text-mauve-400 hover:text-white transition-colors"
+              class="text-xs font-mono tracking-widest uppercase text-primary hover:text-on-surface transition-colors"
               @click="clearAll"
             >
               Clear all
@@ -210,7 +211,9 @@ const results = [
 
         <!-- Faceted filters -->
         <aside class="lg:col-span-1 lg:pl-8">
-          <p class="font-mono text-xs tracking-widest uppercase text-mauve-500 mb-4">Filters</p>
+          <p class="font-mono text-xs tracking-widest uppercase text-primary mb-4">
+            Filters
+          </p>
 
           <div class="flex flex-col divide-y divide-on-surface/12">
             <div v-for="filter in filters" :key="filter.label">
@@ -221,15 +224,15 @@ const results = [
               >
                 <span
                   class="text-sm transition-colors"
-                  :class="selectedFilters[filter.label]?.length ? 'text-white font-medium' : 'text-mauve-300 group-hover:text-white'"
+                  :class="selectedFilters[filter.label]?.length ? 'text-on-surface font-medium' : 'text-on-surface-muted group-hover:text-on-surface'"
                 >
                   {{ filter.label }}
-                  <span v-if="selectedFilters[filter.label]?.length" class="ml-1.5 text-xs text-mauve-400">
+                  <span v-if="selectedFilters[filter.label]?.length" class="ml-1.5 text-xs text-on-surface-variant">
                     ({{ selectedFilters[filter.label].length }})
                   </span>
                 </span>
                 <svg
-                  class="w-3.5 h-3.5 text-mauve-500 transition-transform duration-200 shrink-0"
+                  class="w-3.5 h-3.5 text-on-surface-variant transition-transform duration-200 shrink-0"
                   :class="isOpen(filter.label) ? 'rotate-180' : ''"
                   fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"
                 >
@@ -253,12 +256,12 @@ const results = [
                   <span
                     class="w-4 h-4 rounded border flex items-center justify-center shrink-0 transition-colors"
                     :class="isSelected(filter.label, option)
-                      ? 'bg-mauve-500 border-mauve-500'
-                      : 'border-mauve-600 group-hover:border-mauve-400'"
+                      ? 'bg-primary border-outline'
+                      : 'border-outline group-hover:border-outline-variant'"
                   >
                     <svg
                       v-if="isSelected(filter.label, option)"
-                      class="w-2.5 h-2.5 text-white"
+                      class="w-2.5 h-2.5 text-on-primary"
                       fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"
                     >
                       <path d="M20 6 9 17l-5-5" />
@@ -266,7 +269,7 @@ const results = [
                   </span>
                   <span
                     class="text-xs transition-colors leading-relaxed"
-                    :class="isSelected(filter.label, option) ? 'text-white' : 'text-mauve-400 group-hover:text-mauve-200'"
+                    :class="isSelected(filter.label, option) ? 'text-on-surface' : 'text-on-surface-variant group-hover:text-on-surface-muted'"
                   >
                     {{ option }}
                   </span>
@@ -275,7 +278,6 @@ const results = [
             </div>
           </div>
         </aside>
-
       </div>
     </div>
   </div>
